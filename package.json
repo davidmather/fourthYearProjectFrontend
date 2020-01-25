@@ -1,0 +1,25 @@
+{
+  "name": "code",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npm install && node ./bin/https"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "clean-css": "^4.2.1",
+    "cookie-parser": "~1.4.4",
+    "crypto": "^1.0.1",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "^1.6.3",
+    "morgan": "~1.9.1",
+    "node-static": "^0.7.10",
+    "nodemon": "^2.0.2",
+    "path": "^0.12.7",
+    "pug": "^2.0.4",
+    "socket.io": "^2.3.0",
+    "speech-polyfill": "0.0.5",
+    "uuid": "^3.3.3"
+  }
+}
