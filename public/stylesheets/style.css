@@ -5,7 +5,7 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #DA4453;
 }
 
 
@@ -13,9 +13,8 @@ a {
 body { font: 13px Helvetica, Arial; }
 
 
-@media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */
-
-  #videocontainer{
+@media (min-width:320px) { /* smartphones, iPhone, portrait 480x320 phones */
+  #login, #register{
     width: 100%;
     border: none;
     position: fixed;
@@ -25,64 +24,72 @@ body { font: 13px Helvetica, Arial; }
     background: white;
     font-size: 2em;
   }
-  #videocontainer form{
-    border: none;
-    position: absolute;
-    bottom: 0;
+  .chatcontainer{
     width: 100%;
+    border: none;
+    position: fixed;
+    top:0px;
+    right: 0px;
+    bottom: 0px;
+    background: white;
     font-size: 2em;
   }
-  #videocontainer form input{
-    padding: 10px;
+  .chatcontainer .newmessage{
+    padding: 0px;
     width: 100%;
     border: none;
-    border-top: 1px solid #00B7FF;
+    border-top: 1px solid  #89216B;
     font-size: 0.4em;
   }
-  #videocontainer form button{
+  .newmessage input{
+    width: 100%;
+  }
+  .chatMessageButtonContainer button{
     background: none;
     border: none;
-    padding: 10px;
+    padding: 2px;
     font-size: 22px;
   }
-  #videocontainer form button i{
-    color: #00B7FF;
-    font-size: 1.5em;
+  .chatMessageButtonContainer button i{
+    color:  #89216B;
+    font-size: 1em;
   }
-  #messages div{
+  .messages div{
     clear: both;
   }
-  #videos{
+  .videos{
     width: 100%;
     height: 100%;
     position: absolute;
-    background: blue;
+    background: white;
     transition: 1s;
+    top: 0;
+    right: 0;
   }
-  #videos div:nth-child(2){
+  .videos div:nth-child(2){
     width: 100%;
     height: 100%;
   }
-  #videos div:nth-child(2) video{
+  .videos div:nth-child(2) video{
     width: 100%;
     height: 100%;
   }
 
-  #videos div:nth-child(3){
+  .videos div:nth-child(3){
     position: absolute;
     right: 10px;
     top: 3em;
     width: 7em;
     height: 9em;
   }
-  #videos div:nth-child(3) video {
+  .videos div:nth-child(3) video {
     background: beige;
     width: 100%;
     height: 100%;
   }
   #videosbuttoncontainer{
     width: 100%;
-    background: #00B7FF;
+    background: linear-gradient(to right, #89216B, #DA4453);
     height: 34px;
   }
   #videosbuttoncontainer button{
@@ -92,18 +99,18 @@ body { font: 13px Helvetica, Arial; }
     font-size: 22px;
     margin: 0.2em;
   }
-  #messages{
+  .messages{
     background: pink;
-    position: absolute;
-    top: 34px;
-    bottom: 109px;
     width: 100%;
+    height:23vh;
   }
   #megacontainer{
     position: fixed;
     width: 100%;
     height: 100%;
     overflow:hidden;
+    top: 0;
+    left: 0;
   }
 
   #buttoncontainer{
@@ -111,33 +118,42 @@ body { font: 13px Helvetica, Arial; }
     background: #00B7FF;
     height: 34px;
   }
-  #buttoncontainer button{
+  .buttoncontainer button{
     border: none;
     background: none;
     color: white;
     font-size: 22px;
     margin: 0.2em;
+    margin-left: 5px;
   }
-  #buttoncontainer button:hover{
+  .buttoncontainer button:hover{
     color: aquamarine;
   }
   #chatbutton{
-    width: 150px;
-    border: 1px solid #00B7FF;
-    position: fixed;
+    position: absolute;
     bottom: 0px;
-    right: 10px;
-    background: #00B7FF;
+    right: 0px;
+    width: 80px;
     color: white;
     cursor: pointer;
     padding: 10px;
-    text-transform: capitalize;
-    font-family: Tahoma, serif;
+    text-align: center;
     font-weight: bold;
+    border-radius: 2em;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    border-top-right-radius: 1em;
   }
-  #chatMessageButtonContainer{
+  #chatbutton i {
+    font-size: 3em;
+  }
+  .chatMessageButtonContainer{
     background: white;
     width: 100%;
+  }
+  .chatMessageButtonContainer button{
+    background: none;
+    border: none;
   }
   .videosInvisible{
     right: -100%;
@@ -145,6 +161,231 @@ body { font: 13px Helvetica, Arial; }
   .videosVisible {
     right: 0;
   }
+  #register form {
+    padding-bottom: 20px;
+  }
+  .input_container {
+    position:relative;
+  }
+  .input_container i ,.input_container img{
+    position: absolute;
+    bottom: 7px;
+    left: 0px;
+    padding: 12px;
+    font-size: 0.7em;
+    text-align: center;
+    background: #DA4453;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #89216B, #DA4453);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #89216B, #DA4453); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+  }
+  .input_container img{
+    width: 43px;
+    padding: 8px;
+  }
+
+  #login input[type=email], #login input[type=password],#login input[type=text], #login select,
+  #register input[type=email], #register input[type=password],#register input[type=text], #register select{
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding-left: 50px;
+    width: 250px;
+    color: #89216B;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  #login input[type=email]:focus, #login input[type=password]:focus,#login input[type=text]:focus, #login select:focus,
+  #register input[type=email]:focus, #register input[type=password]:focus,#register input[type=text]:focus, #register select:focus{
+    outline: none;
+    border: 1px solid #89216B;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus  {
+    outline: none;
+    border: 1px solid #89216B;
+    color: #89216B;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #89216B;
+  }
+
+  #login, #register{
+    position: fixed;
+    padding: 10px;
+  }
+  #login .block-heading, #register .block-heading{
+    margin-bottom: 35px;
+  }
+  #login h2, #register h2{
+    color: white;
+    background: #DA4453;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #89216B, #DA4453);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #89216B, #DA4453); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    padding: 10px;
+    font-size: 0.7em;
+    text-align: center;
+    cursor: pointer;
+  }
+  hr {
+    border-top: 1px solid #DA4453;
+  }
+  #login button, #register button {
+    background: none;
+    color: white;
+    border: none;
+    /*background-color: #00B7FF;*/
+    background: #DA4453;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #89216B, #DA4453);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #89216B, #DA4453); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 8px 12px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.7em;
+  }
+  #login p, #register p {
+    font-size: 0.5em;
+    text-align: center;
+    margin-top: 15px;
+  }
+  #login span, #register span {
+    color: #DA4453;
+    font-size: 0.5em;
+    cursor: pointer;
+  }
+  #login p span, #register p span {
+    font-size: 1em;
+    margin-left: 5px;
+  }
+  #login p span:hover, #register p span:hover  {
+    text-decoration: underline;
+  }
+  #login form, #register form {
+    padding-bottom: 30px;
+    padding-top: 20px;
+    margin: auto;
+    width: 250px;
+  }
+  #register form {
+    padding-bottom: 20px;
+  }
+  .form-group span {
+    margin-left: 10px;
+  }
+  #guestLogin {
+    display: inline-block;
+    font-size: 0.7em;
+    margin-left: 5px;
+  }
+
+  #onlineUsersSidebar {
+    width: 100%;
+    background: white;
+  }
+  #onlineUsersSidebar img{
+    width: 32px;
+  }
+  #onlineUsersSidebar #toolbar{
+    background: linear-gradient(to right, #89216B, #DA4453);
+  }
+  #onlineUsersContainer{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 95vh;
+    width: 100%;
+  }
+  #onlineUsersContainer div{
+    text-align: center;
+    padding: 0.5em;
+    cursor: pointer;
+  }
+  #onlineUsersContainer div:hover{
+    background: gainsboro;
+  }
+  #toolbar {
+    height: 5vh;
+  }
+
+  .buttoncontainer{
+    background: #DA4453;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #89216B, #DA4453);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #89216B, #DA4453); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 5vh;
+  }
+  .buttoncontainer button{
+    border: none;
+    background: none;
+    color: white;
+    font-size: 22px;
+    margin: 0.2em;
+    margin-left: 5px;
+  }
+  .buttoncontainer button:hover{
+    color: aquamarine;
+  }
+
+
+  .messages {
+    margin: 0;
+    padding: 0;
+    height: 85vh;
+    overflow-y: scroll;
+  }
+
+  .messages .anotheruser {
+    background: #DA4453;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #89216B, #DA4453);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #89216B, #DA4453); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: .4em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    max-width: 70%;
+    min-height: 40px;
+    width: 60%;
+    color: white;
+    padding: 10px;
+    font-size: 1.2em;
+  }
+
+  .messages .currentuser {
+    background: #DA4453;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #89216B, #DA4453);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #89216B, #DA4453); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: .4em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    max-width: 70%;
+    min-height: 40px;
+    width: 60%;
+    color: white;
+    padding: 10px;
+    font-size: 1.2em;
+    float: right;
+  }
+
 }
 @media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
 
@@ -159,39 +400,293 @@ body { font: 13px Helvetica, Arial; }
 
 }
 @media (min-width:1281px) { /* hi-res laptops and desktops */
-
-  #megacontainer{
-    width: 500px;
-    right: 0px;
+  #toolbar {
+    height: 3vh;
   }
-  #videocontainer{
-    border: 1px solid #00B7FF;
+
+
+  #onlineUsersSidebar {
+    width: 10vw;
+    border-left: 3px solid #89216B;
+    border-right: 3px solid #89216B;
     position: absolute;
-    bottom: 0px;
+    right: 0;
+    top: 0;
+    bottom: 0;
     background: white;
   }
+  #onlineUsersSidebar img{
+    width: 32px;
+  }
+  #onlineUsersSidebar #toolbar{
+    background: linear-gradient(to right, #89216B, #DA4453);
+  }
+  #onlineUsersContainer{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 97vh;
+    width: 100%;
+  }
+  #onlineUsersContainer div{
+    text-align: center;
+    padding: 0.5em;
+    cursor: pointer;
+  }
+  #onlineUsersContainer div:hover{
+    background: gainsboro;
+  }
+  .chatcontainer{
+    position: absolute;
+    bottom: 0px;
+    width: 15vw;
+    background: white;
+    right: 11vw;
+    height: 32vh;
+    top: unset;
+    border: 2px solid #89216B;
+    border-bottom: none;
+  }
+  #login, #register{
 
-  form input { border: 0; padding: 10px; width: 100%; margin-right: .5%; }
-  form button {
+    border-width: 3px;
+    border-style: solid;
+    border-image: linear-gradient(to right, #89216B, #DA4453) 30 round;
+    position: fixed;
+    bottom: 80px;
+    right: 10px;
+    padding: 10px;
+    top:unset;
+    width: 300px;
+    border-radius: 4px;
+  }
+  #login .block-heading, #register .block-heading{
+    margin-bottom: 35px;
+  }
+  #login h2, #register h2{
+    color: white;
+    background: #DA4453;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #89216B, #DA4453);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #89216B, #DA4453); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    padding: 10px;
+    font-size: 0.7em;
+    text-align: center;
+    cursor: pointer;
+  }
+  hr {
+    border-top: 1px solid #DA4453;
+  }
+  #guestLogin {
+    display: inline-block;
+    font-size: 0.7em;
+    margin-left: 5px;
+  }
+  #login input[type=email], #login input[type=password],#login input[type=text], #login select,
+  #register input[type=email], #register input[type=password],#register input[type=text], #register select{
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding-left: 50px;
+    width: 250px;
+    color: #89216B;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  #login input[type=email]:focus, #login input[type=password]:focus,#login input[type=text]:focus, #login select:focus,
+  #register input[type=email]:focus, #register input[type=password]:focus,#register input[type=text]:focus, #register select:focus{
+    outline: none;
+    border: 1px solid #89216B;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus  {
+    outline: none;
+    border: 1px solid #89216B;
+    color: #89216B;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #89216B;
+  }
+
+  #login button, #register button {
+    background: none;
+    color: white;
+    border: none;
+    /*background-color: #00B7FF;*/
+    background: #DA4453;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #89216B, #DA4453);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #89216B, #DA4453); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding: 8px 12px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.7em;
+  }
+  #login p, #register p {
+    font-size: 0.5em;
+    text-align: center;
+    margin-top: 15px;
+  }
+  #login span, #register span {
+    color: #DA4453;
+    font-size: 0.5em;
+    cursor: pointer;
+  }
+  #login p span, #register p span {
+    font-size: 1em;
+    margin-left: 5px;
+  }
+  #login p span:hover, #register p span:hover  {
+    text-decoration: underline;
+  }
+  #login form, #register form {
+    padding-bottom: 30px;
+    padding-top: 20px;
+    margin: auto;
+    width: 90%;
+  }
+  #register form {
+    padding-bottom: 20px;
+  }
+  .input_container {
+    position:relative;
+  }
+  .input_container i ,.input_container img{
+    position: absolute;
+    bottom: 7px;
+    left: 0px;
+    padding: 12px;
+    font-size: 0.7em;
+    text-align: center;
+    background: #DA4453;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #89216B, #DA4453);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #89216B, #DA4453); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+  }
+  .input_container img{
+    width: 43px;
+    padding: 8px;
+  }
+  /* The container */
+  .chcekbox-group {
+    display: inline-block;
+    width: 120px;
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 0.5em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Hide the browser's default checkbox */
+  .chcekbox-group input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #eee;
+  }
+
+  #login .checktext {
+    margin-left: 5px;
+    font-size: 1em;
+    color: black;
+  }
+
+  /* On mouse-over, add a grey background color */
+  .chcekbox-group:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+
+  /* When the checkbox is checked, add a blue background */
+  .chcekbox-group input:checked ~ .checkmark {
+    background: #DA4453;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #89216B, #DA4453);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #89216B, #DA4453); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .chcekbox-group:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  /* Show the checkmark when checked */
+  .chcekbox-group input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  /* Style the checkmark/indicator */
+  .chcekbox-group .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  /*form input { border: 0; padding: 10px; width: 100%; margin-right: .5%; }*/
+  .chatcontainer form button {
     width: 9%;
     background: none;
     border: none;
-    padding: 10px;
+    padding: 2px;
+    cursor:pointer;
   }
   form i{
-    color: #00B7FF;
+    color: #DA4453;
     font-size: 1.5em;
   }
 
-  #messages {
+  .messages {
     margin: 0;
     padding: 0;
     max-height: 90%;
+    height: 70%;
     overflow-y: scroll;
   }
 
-  #messages .anotheruser {
-    background: #00B7FF;
+  .messages .anotheruser {
+    background: #DA4453;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #89216B, #DA4453);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #89216B, #DA4453); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     border-radius: .4em;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -204,8 +699,10 @@ body { font: 13px Helvetica, Arial; }
     font-size: 1.2em;
   }
 
-  #messages .currentuser {
-    background: #00B7FF;
+  .messages .currentuser {
+    background: #DA4453;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #89216B, #DA4453);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #89216B, #DA4453); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     border-radius: .4em;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -219,16 +716,21 @@ body { font: 13px Helvetica, Arial; }
     float: right;
   }
 
-  #buttoncontainer{
-    background: #00B7FF;
+  .buttoncontainer{
+    background: #DA4453;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #89216B, #DA4453);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #89216B, #DA4453); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 3vh;
   }
-  #buttoncontainer button{
+  .buttoncontainer button{
     border: none;
     background: none;
-    cursor: pointer;
-    color: whitesmoke;
+    color: white;
+    font-size: 22px;
+    margin: 0.2em;
+    margin-left: 5px;
   }
-  #buttoncontainer button:hover{
+  .buttoncontainer button:hover{
     color: aquamarine;
   }
 
@@ -239,19 +741,19 @@ body { font: 13px Helvetica, Arial; }
     height:100%;
   }
 
-  #videos > div{
+  .videos > div{
     float: left;
   }
-  #videos > div > div {
+  .videos > div > div {
     display: none;
     position: absolute;
     bottom: 0px;
   }
-  #videos > div:hover > div {
+  .videos > div:hover > div {
     display: block;
   }
 
-  #videos > div > div button{
+  .videos > div > div button{
     background: none;
     border: none;
     color: white;
@@ -260,4 +762,38 @@ body { font: 13px Helvetica, Arial; }
     margin: 1px;
   }
 
+}
+
+.dot{
+  height: 5px;
+  width: 5px;
+  background-color: #bbaea6;
+  border-radius: 50%;
+  display: inline-block;
+}
+.active .dot {
+  background-color: #26bb0f;
+
+
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #89216B, #DA4453);
+  height: 100px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to right, #89216B, #DA4456);
 }

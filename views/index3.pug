@@ -2,7 +2,7 @@ extends layout
 
 block style
     link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css' type='text/css')
-    link(rel='stylesheet' href='https://localhost:8443/test/css/demo.css' type='text/css')
+    link(rel='stylesheet' href='test/css/demo.css' type='text/css')
     link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css' type='text/css')
     link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.css')
 
@@ -10,19 +10,20 @@ block script
     script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/6.4.0/adapter.min.js')
     script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js')
     script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js')
+    script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js')
     script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.1.0/bootbox.min.js')
     script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js')
-    script(type='text/javascript' src='https://localhost:8443/test/janus.js')
-    script(type='text/javascript' src='https://localhost:8443/test/videocalltest.js')
+    script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js')
+    script(type='text/javascript' src='test/janus.js')
+    script(type='text/javascript' src='test/videocalltest.js')
     script.
         $(function () {
-            $(".navbar-static-top").load("https://localhost:8443/janus/navbar.html", function () {
+            $(".navbar-static-top").load("janus/navbar.html", function () {
                 $(".navbar-static-top li.dropdown").addClass("active");
-                $(".navbar-static-top a[href='http://localhost:8443/janus/videocalltest.html']").parent().addClass("active");
+                $(".navbar-static-top a[href='janus/videocalltest.html']").parent().addClass("active");
             });
             $(".footer").load("janus/footer.html");
         });
-
 
 block content
     a(href='https://github.com/meetecho/janus-gateway')

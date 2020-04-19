@@ -1,30 +1,5 @@
 version: "2"
 services:
-  janus-gateway:
-    image: qxip/docker-janus
-    container_name: janus-gateway
-    volumes:
-      - ./janus/janus/etc/janus/:/root/janus/etc/janus/
-      - ./janus/janus/janus.log:/var/log/janus.log
-    ports:
-      - "8088:8088"
-      - "8089:8089"
-      - "8188:8188"
-      - "7088:7088"
-      - "7188:7188"
-      - "7889:7889"
-      - "10000-10200:10000-10200"
-    expose:
-      - "8088"
-      - "8089"
-      - "8188"
-      - "7088"
-      - "7188"
-      - "7889"
-      - "10000-10200"
-    networks:
-      - back-tier
-      - front-tier
 
   translation:
     image: "apertium"
