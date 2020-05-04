@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+    <file path="C:\Users\David\Desktop\fourthYearProject\frontend\test.js">
+        <testCase name="loading express responds to /" duration="580">
+            <failure message="Error: certificate has expired"><![CDATA[Error: certificate has expired
+    at TLSSocket.onConnectSecure (_tls_wrap.js:1321:34)
+    at TLSSocket.emit (events.js:210:5)
+    at TLSSocket._finishInit (_tls_wrap.js:794:8)
+    at TLSWrap.ssl.onhandshakedone (_tls_wrap.js:608:12)]]></failure>
+        </testCase>
+    </file>
+    <file path="C:\Users\David\Desktop\fourthYearProject\frontend\test\app.test.js">
+        <testCase name="loading express responds to /" duration="533">
+            <failure message="TypeError: request(...).defaults is not a function"><![CDATA[TypeError: request(...).defaults is not a function
+    at Object.testSlash (C:\Users\David\Desktop\fourthYearProject\frontend\test\app.test.js:14:25)
+    at C:\Users\David\Desktop\fourthYearProject\frontend\node_modules\jest-jasmine2\build\queueRunner.js:45:12
+    at new Promise (<anonymous>)
+    at mapper (C:\Users\David\Desktop\fourthYearProject\frontend\node_modules\jest-jasmine2\build\queueRunner.js:28:19)
+    at C:\Users\David\Desktop\fourthYearProject\frontend\node_modules\jest-jasmine2\build\queueRunner.js:75:41
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)]]></failure>
+        </testCase>
+    </file>
+</testExecutions>

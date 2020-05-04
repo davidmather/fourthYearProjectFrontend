@@ -9,6 +9,9 @@ if("serviceWorker" in navigator) {
     });
 
 }
+
+
+
 var myusername;
 let deferredPrompt;
 let webpage = document.getElementById("webpage");
@@ -111,7 +114,8 @@ function startChat(username) {
     var room = 'foo';
     var socket;
     var callOngoing = true;
-    var videocontainer;
+    var videocontainer = document.createElement("div");
+
     socket =  io.connect();
     //socket = io.connect('http://localhost:8443',{'forceNew':true });
     socket.on('connect', function(msg){
@@ -162,6 +166,11 @@ function startChat(username) {
     function startVideocall(){
         if(!callOngoing){
             videocontainer.className = "videos";
+        }
+        if(typeof videocontainer !== 'undefined') {
+            while (videocontainer.lastElementChild) {
+                videocontainer.removeChild(videocontainer.lastElementChild);
+            }
         }
 
         callOngoing = true;
@@ -468,44 +477,73 @@ function startChat(username) {
                 // };
                 fileTransferButton.addEventListener("change",function () {
                     var file = fileTransferButton.files[0];
-                    var reader = new window.FileReader();
-                    reader.readAsDataURL(file);
-                    reader.onload = onReadAsDataURL;
+                    // var reader = new window.FileReader();
+                    //                     // reader.readAsDataURL(file);
+                    //                     // reader.onload = onReadAsDataURL;
+                    fileChunks = [];
+                    file.arrayBuffer()
+                        .then(buffer => {
+                            const chunkSize = 16 * 1024;
+                            while(buffer.byteLength) {
+                                const chunk = buffer.slice(0, chunkSize);
+                                buffer = buffer.slice(chunkSize, buffer.byteLength);
+                                dataChannel.send(chunk);
+                            }
+
+                            // End message to signal that all chunks have been sent
+                            dataChannel.send('Done!'+file.name);
+                        });
                 });
-                function onReadAsDataURL(event, text) {
-                    var data = {}; // data object to transmit over data channel
+                // function onReadAsDataURL(event, text) {
+                //     var data = {}; // data object to transmit over data channel
+                //
+                //     if (event) text = event.target.result; // on first invocation
+                //
+                //     if (text.length > chunkLength) {
+                //         data.message = text.slice(0, chunkLength); // getting chunk using predefined chunk length
+                //     } else {
+                //         data.message = text;
+                //         data.last = true;
+                //     }
+                //     console.log("testing");
+                //     dataChannel.send(JSON.stringify(data)); // use JSON.stringify for chrome!
+                //
+                //     var remainingDataURL = text.slice(data.message.length);
+                //     if (remainingDataURL.length) setTimeout(function () {
+                //         onReadAsDataURL(null, remainingDataURL); // continue transmitting
+                //     }, 500)
+                // }
 
-                    if (event) text = event.target.result; // on first invocation
-
-                    if (text.length > chunkLength) {
-                        data.message = text.slice(0, chunkLength); // getting chunk using predefined chunk length
-                    } else {
-                        data.message = text;
-                        data.last = true;
-                    }
-                    console.log("testing");
-                    dataChannel.send(JSON.stringify(data)); // use JSON.stringify for chrome!
-
-                    var remainingDataURL = text.slice(data.message.length);
-                    if (remainingDataURL.length) setTimeout(function () {
-                        onReadAsDataURL(null, remainingDataURL); // continue transmitting
-                    }, 500)
-                }
-
+                var fileChunks = [];
                 function handleDatachannelMessage(event){
                     console.log(event.data);
-                    var data = JSON.parse(event.data);
+                    let stringrep = event.data.toString();
+                    if (stringrep.indexOf('Done!')  != -1) {
+                        // Once, all the chunks are received, combine them to form a Blob
+                        const file = new Blob(fileChunks);
 
-                    arrayToStoreChunks.push(data.message); // pushing chunks in array
+                        console.log('Received', file);
 
-                    if (data.last) {
-                        saveToDisk(arrayToStoreChunks.join(''), 'fake.php');
-                        arrayToStoreChunks = []; // resetting array
+                        // Download the received file using downloadjs
+                        download(file, stringrep.split("Done!")[1]);
                     }
+                    else {
+                        // Keep appending various file chunks
+                        fileChunks.push(event.data);
+                    }
+
+                    // var data = JSON.parse(event.data);
+                    //
+                    // arrayToStoreChunks.push(data.message); // pushing chunks in array
+                    //
+                    // if (data.last) {
+                    //     saveToDisk(arrayToStoreChunks.join(''), 'fake.php');
+                    //     arrayToStoreChunks = []; // resetting array
+                    // }
                 }
 
                 function handleDatachannelOpen(){
-                    dataChannel.send(JSON.stringify("Hello World!"));
+                    console.log("The data channel is open")
                 }
                 function handleDatachannelClose(){
                     console.log("The Data Channel is Closed");
@@ -632,6 +670,7 @@ function startChat(username) {
     buttonContainer.className="buttoncontainer";
     var videocallbutton = document.createElement("button");
     videocallbutton.title = "start a videocall";
+    videocallbutton.id = "videocallbutton";
     var videocallIcon = document.createElement("i");
     videocallIcon.className = "fa fa-video-camera";
     videocallbutton.addEventListener("click",function (){
@@ -825,6 +864,7 @@ function createLoginForm() {
     form.appendChild(container);
 
     var loginButton = document.createElement("button");
+    loginButton.id = "loginButton";
     var loginButtonText = document.createTextNode("Login");
     loginButton.type = "button";
     loginButton.appendChild(loginButtonText);
@@ -880,8 +920,12 @@ function createLoginForm() {
                 let result = JSON.parse(xhr.response);
                 if(result.success === true){
                     console.log("register success");
-                    //document.getElementById("loggedOut").style.display = "none";
-                    //document.getElementById("loggedIn").style.display = "block";
+                    showLoginForm();
+                    console.log(result);
+                    console.log(result.ActiveUsers);
+                    myusername = result.username;
+                    showActiveUsers(result.ActiveUsers, result.username);
+                    chatbutton.style.display = "none";
                 }
             }
         };
@@ -1036,31 +1080,33 @@ function showActiveUsers(activeUsers, username){
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 let result = JSON.parse(xhr.response);
+                console.log(result);
                 if(result.success === true){
                     displaystate = 1;
                     showLoginForm();
                     console.log(result);
                     console.log(result.ActiveUsers);
                     showActiveUsers(result.ActiveUsers, result.username);
+                    let ActiveUsers = JSON.parse(result.ActiveUsers);
 
                     while (onlineUsersContainer.lastElementChild) {
                         onlineUsersContainer.removeChild(onlineUsersContainer.lastElementChild);
                     }
-                    for(let i = 0; i < result.activeUsers.length; i = i + 1){
-                        if(result.activeUsers[i].username == username){
+                    for(let i = 0; i < ActiveUsers.length; i = i + 1){
+                        if(ActiveUsers[i].username == username){
                             continue
                         }
-                        console.log(result.activeUsers[i]);
+                        console.log(ActiveUsers[i]);
                         let User = document.createElement("div");
                         User.className = "active";
                         onlineUsersContainer.appendChild(User);
-                        let UserText = document.createTextNode(result.activeUsers[i].username);
+                        let UserText = document.createTextNode(ActiveUsers[i].username);
                         User.appendChild(UserText);
                         let span = document.createElement("span");
                         span.className="dot";
                         User.appendChild(span);
                         User.addEventListener("click", function () {
-                            startChat(result.activeUsers[i].username, username)
+                            startChat(ActiveUsers[i].username, username)
                         });
                         onlineUsersContainer.appendChild(User);
                     }

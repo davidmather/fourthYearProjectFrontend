@@ -3,10 +3,26 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "npm install && node ./bin/https"
+    "start": "npm install && node ./src/bin/https",
+    "sonar":  "node sonar-project.js",
+    "test":  "jest --coverage"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "testResultsProcessor": "jest-sonar-reporter"
+  },
+  "jestSonar": {
+    "reportPath": "coverage",
+    "reportFile": "test-reporter.xml",
+    "indent": 4
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "clean-css": "^4.2.1",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.4",
@@ -14,6 +30,9 @@
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "http-errors": "^1.6.3",
+    "jest": "^25.5.4",
+    "jest-sonar-reporter": "^2.0.0",
+    "mocha": "^7.1.1",
     "morgan": "~1.9.1",
     "node-static": "^0.7.10",
     "nodemon": "^2.0.2",
@@ -22,7 +41,10 @@
     "randomstring": "^1.1.5",
     "request": "^2.88.2",
     "socket.io": "^2.3.0",
+    "sonarqube-scanner": "^2.6.0",
     "speech-polyfill": "0.0.5",
+    "superagent": "^4.1.0",
+    "supertest": "^5.0.0-0",
     "uuid": "^3.3.3",
     "xml2js": "^0.4.23"
   }

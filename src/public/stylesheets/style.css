@@ -111,6 +111,7 @@ body { font: 13px Helvetica, Arial; }
     overflow:hidden;
     top: 0;
     left: 0;
+    z-index: -1;
   }
 
   #buttoncontainer{
@@ -796,4 +797,8 @@ body { font: 13px Helvetica, Arial; }
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(to right, #89216B, #DA4456);
+}
+
+#webpage{
+  z-index: 1;
 }
