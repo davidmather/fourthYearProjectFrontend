@@ -40,7 +40,7 @@
     "pug": "^2.0.4",
     "randomstring": "^1.1.5",
     "request": "^2.88.2",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.4.0",
     "sonarqube-scanner": "^2.6.0",
     "speech-polyfill": "0.0.5",
     "superagent": "^4.1.0",
