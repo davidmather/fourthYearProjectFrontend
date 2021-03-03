@@ -37,7 +37,7 @@
     "node-static": "^0.7.10",
     "nodemon": "^2.0.2",
     "path": "^0.12.7",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "randomstring": "^1.1.5",
     "request": "^2.88.2",
     "socket.io": "^2.3.0",
